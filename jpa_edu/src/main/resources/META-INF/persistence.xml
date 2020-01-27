@@ -7,6 +7,8 @@
             <class>edu.pkch.jpaedu.domain.Article</class>
             <class>edu.pkch.jpaedu.domain.Comment</class>
             <class>edu.pkch.jpaedu.domain.Company</class>
+            <class>edu.pkch.jpaedu.manytoone.MtoArticle</class>
+            <class>edu.pkch.jpaedu.manytoone.MtoComment</class>
 <!--            <class>edu.pkch.jpaedu.advanced.superclass.Item</class>-->
 <!--            <class>edu.pkch.jpaedu.advanced.superclass.Book</class>-->
 <!--            <class>edu.pkch.jpaedu.advanced.superclass.Album</class>-->
@@ -20,9 +22,9 @@
                 <!-- 필수 속성 -->
                 <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="javax.persistence.jdbc.user" value="root"/>
-                <property name="javax.persistence.jdbc.password" value="qwer"/>
-                <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:23306/mysql?useUnicode=true;characterEncoding=utf8"/>
-<!--                <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />-->
+                <property name="javax.persistence.jdbc.password" value="1234"/>
+                <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mysql?useUnicode=true;characterEncoding=utf8"/>
+                <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 
                 <!-- 옵션 -->
                 <property name="hibernate.show_sql" value="true" />
