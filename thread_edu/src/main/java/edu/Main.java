@@ -1,4 +1,4 @@
-package src;
+package edu;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
