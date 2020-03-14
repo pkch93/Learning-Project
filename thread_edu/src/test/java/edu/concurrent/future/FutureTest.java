@@ -1,4 +1,4 @@
-package edu.concurrent;
+package edu.concurrent.future;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
