@@ -18,8 +18,8 @@ public class CompletableFutureTest {
         IntStream.rangeClosed(1, 10)
                 .forEach(index -> asyncCount(countFuture));
 
-        assertThat(countFuture).isDone();
-        assertThat(countFuture.get()).isEqualTo(1);
+        Assertions.assertThat(countFuture).isDone();
+        Assertions.assertThat(countFuture.get()).isEqualTo(1);
     }
 
     private void asyncCount(CompletableFuture<Integer> future) {
@@ -29,7 +29,7 @@ public class CompletableFutureTest {
     @Test
     @DisplayName("CompletableFuture completeExceptionally로 예외 던지기")
     void practiceCompleteExceptionally() {
-        assertThatThrownBy(() -> asyncCountForException().get()).isInstanceOf(RuntimeException.class);
+        Assertions.assertThatThrownBy(() -> asyncCountForException().get()).isInstanceOf(RuntimeException.class);
     }
 
     private Future<Integer> asyncCountForException() {
@@ -49,6 +49,6 @@ public class CompletableFutureTest {
 
         CompletableFuture<Integer> actual = CompletableFuture.supplyAsync(() -> 1, executor);
 
-        assertThat(actual.get()).isEqualTo(1);
+        Assertions.assertThat(actual.get()).isEqualTo(1);
     }
 }

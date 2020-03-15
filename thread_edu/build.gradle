@@ -1,26 +1,39 @@
-plugins {
-    id 'java'
+buildscript {
+    ext.springBootVersion = '2.2.1.RELEASE'
+    ext.javaVersion = '1.8'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+    }
 }
 
-group 'edu.pkch'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
+allprojects {
+    group = 'edu.pkch'
+    version = '0.0.1-SNAPSHOT'
 }
 
-dependencies {
-    implementation 'ch.qos.logback:logback-classic:1.2.3'
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
-    testImplementation 'org.assertj:assertj-core:3.14.0'
-}
+    sourceCompatibility = "${javaVersion}"
 
-test {
-    useJUnitPlatform()
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok:1.18.12'
+        annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    }
+    
+    test {
+        useJUnitPlatform()
+    }
 }

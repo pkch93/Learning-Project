@@ -19,9 +19,9 @@ public class ExecutorTest {
         executor = new DirectExecutor();
         String threadName = Thread.currentThread().getName();
 
-        assertThat(threadName).isEqualTo(WORKER_NAME);
+        Assertions.assertThat(threadName).isEqualTo(WORKER_NAME);
 
-        Runnable task = () -> assertThat(Thread.currentThread().getName()).isEqualTo(WORKER_NAME);
+        Runnable task = () -> Assertions.assertThat(Thread.currentThread().getName()).isEqualTo(WORKER_NAME);
         executor.execute(task);
     }
 
@@ -31,12 +31,12 @@ public class ExecutorTest {
         executor = new AsyncExecutor();
         String threadName = Thread.currentThread().getName();
 
-        assertThat(threadName).isEqualTo(WORKER_NAME);
+        Assertions.assertThat(threadName).isEqualTo(WORKER_NAME);
 
         CountDownLatch countDownLatch = new CountDownLatch(1);
 
         Runnable task = () -> {
-            assertThat(Thread.currentThread().getName()).isNotEqualTo(WORKER_NAME);
+            Assertions.assertThat(Thread.currentThread().getName()).isNotEqualTo(WORKER_NAME);
             countDownLatch.countDown();
         };
 

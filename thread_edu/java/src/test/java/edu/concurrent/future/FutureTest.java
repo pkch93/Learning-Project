@@ -26,6 +26,6 @@ public class FutureTest {
             return 2;
         });
 
-        assertThat(one.get() + two.get()).isEqualTo(3);
+        Assertions.assertThat(one.get() + two.get()).isEqualTo(3);
     }
 }
