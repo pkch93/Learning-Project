@@ -1,0 +1,3 @@
+rootProject.name = 'querydsl-edu'
+include 'domain'
+
