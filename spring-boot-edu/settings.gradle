@@ -1,4 +1,5 @@
 rootProject.name = 'spring-boot-edu'
 include 'spring-async-practice'
 include 'spring-mvc-practice'
+include 'spring-webflux-practice'
 

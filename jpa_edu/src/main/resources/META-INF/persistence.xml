@@ -9,6 +9,8 @@
             <class>edu.pkch.jpaedu.domain.Company</class>
             <class>edu.pkch.jpaedu.manytoone.MtoArticle</class>
             <class>edu.pkch.jpaedu.manytoone.MtoComment</class>
+            <class>edu.pkch.jpaedu.multiple_relation.MultipleArticle</class>
+            <class>edu.pkch.jpaedu.multiple_relation.MultipleComment</class>
 <!--            <class>edu.pkch.jpaedu.advanced.superclass.Item</class>-->
 <!--            <class>edu.pkch.jpaedu.advanced.superclass.Book</class>-->
 <!--            <class>edu.pkch.jpaedu.advanced.superclass.Album</class>-->

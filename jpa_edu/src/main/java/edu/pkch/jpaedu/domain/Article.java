@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "ARTICLE")
+@Table(name = "ARTICLE", indexes = {@Index(name = "article_title_idk", columnList = "title,created_at")})
 public class Article {
 
     @Id
@@ -18,15 +18,15 @@ public class Article {
     @Lob
     private String content;
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CREATED_BY")
-    private Date createdBy;
+    @Column(name = "created_at")
+    private Date createdAt;
 
     /**
      * 1 : N 일대다 매핑 (with Comment)
      * 일반적으로 1 : N에서는 N 쪽에서 외래키를 관리하므로
      * N 쪽에서 외래키를 관리하겠다는 명시가 없다면 연결 테이블이 생성된다.
      */
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     /**
      * 외래키 매핑, 이를 통해 연결테이블 없이 외래키로만 매핑할 수 있다.
      */
@@ -40,7 +40,7 @@ public class Article {
     public Article(final String title, final String content) {
         this.title = title;
         this.content = content;
-        createdBy = new Date();
+        createdAt = new Date();
     }
 
     public Article(String title, String content, List<Comment> comments) {
@@ -60,8 +60,8 @@ public class Article {
         return content;
     }
 
-    public Date getCreatedBy() {
-        return createdBy;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
     public List<Comment> getComments() {

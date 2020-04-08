@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.util.List;
 
 public class OneToManyTest extends JpaTest {
 
@@ -36,6 +37,28 @@ public class OneToManyTest extends JpaTest {
             em.persist(comment);
             // comment insert 발생, 단, Comment에서는 Foreign Key를 관리하지 않으므로 Update 쿼리가 하나 더 발생
             article.getComments().add(comment); // Update 쿼리 발생
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        }
+    }
+
+    @Test
+    @DisplayName("@ElementCollection 처럼 사용하기")
+    void like_elementCollection() {
+        EntityTransaction transaction = em.getTransaction();
+        Article article = em.find(Article.class, 1L);
+
+        try {
+            transaction.begin();
+            Comment comment = new Comment("hello");
+            List<Comment> comments = article.getComments();
+            comments.add(comment);
+            transaction.commit();
+
+            transaction.begin();
+            comments.remove(comment);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
