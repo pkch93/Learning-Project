@@ -1,4 +1,4 @@
 rootProject.name = 'object-practice'
 
-include 'chapter01'
-
+include ':chapter01'
+include ':chapter02:practice'
