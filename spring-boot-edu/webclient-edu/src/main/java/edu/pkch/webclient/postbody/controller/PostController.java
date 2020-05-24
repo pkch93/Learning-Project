@@ -51,6 +51,13 @@ public class PostController {
                 .build());
     }
 
+    @PostMapping("/d2")
+    public Mono<PostResponse> dPostRequestParameter(@RequestBody D2PostRequest d2PostRequest) {
+        return Mono.just(PostResponse.builder()
+                .success(true)
+                .build());
+    }
+
     @PostMapping("/e")
     public Mono<PostResponse> ePostRequestParameter(@RequestBody EPostRequest ePostRequest) {
         log.info("postRequest: {}", ePostRequest);

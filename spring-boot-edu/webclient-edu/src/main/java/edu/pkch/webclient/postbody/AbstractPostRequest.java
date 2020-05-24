@@ -1,16 +1,15 @@
 package edu.pkch.webclient.postbody;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
-
-@Getter
 @ToString
 public abstract class AbstractPostRequest {
-    private LocalDateTime createdAt;
+    private String id;
 
-    public AbstractPostRequest(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public AbstractPostRequest(String id) {
+        this.id = id;
     }
 }

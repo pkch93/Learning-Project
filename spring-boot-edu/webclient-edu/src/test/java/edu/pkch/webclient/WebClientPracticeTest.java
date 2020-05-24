@@ -184,7 +184,7 @@ class WebClientPracticeTest {
         DPostRequest dPostRequest = DPostRequest.builder()
                 .firstName("firstName")
                 .lastName("lastName")
-                .createdAt(LocalDateTime.now())
+                .id("pkch")
                 .build();
 
         Mono<PostResponse> actual = webClient.post()
@@ -200,6 +200,37 @@ class WebClientPracticeTest {
                 .verifyComplete();
     }
 
+    /**
+     * Jackson이 클라이언트에서 매핑할 때는 인터페이스에 구현체가 매핑되어 있으므로 정상적으로 json으로 컨버팅이 가능함
+     * 구현체에 getter가 붙어 있으므로 접근 가능
+     *
+     * 단, 서버 측에서는 제공한 json을 인터페이스/추상클래스로 받는 경우 어떤 객체로 컨버팅해야할 지 알 수 없음.
+     * 이런 이유로 에러가 발생.
+     */
+    @Test
+    @DisplayName("[추상클래스를 상속받은 클래스 타입 - 서버는 Abstract로 받지 않음] post 요청시 body를 제공하는 경우 정상 요청")
+    void test_bodyToClassTypeExtendedAbstractClass_serverReceiveD2PostRequest() {
+        DPostRequest dPostRequest = DPostRequest.builder()
+                .firstName("firstName")
+                .lastName("lastName")
+                .id("pkch")
+                .build();
+
+        Mono<PostResponse> actual = webClient.post()
+                .uri(BASE_URL + "/d2")
+                .body(Mono.just(dPostRequest), DPostRequest.class)
+                .retrieve()
+                .bodyToMono(PostResponse.class);
+
+        StepVerifier.create(actual)
+                .consumeNextWith(postResponse -> {
+                    assertTrue(postResponse.isSuccess());
+                })
+                .verifyComplete();
+    }
+
+
+
     @Test
     @DisplayName("[추상클래스를 필드로 가진 클래스 타입] post 요청시 body를 제공하는 경우 에러 발생")
     void test_bodyToClassTypeHasAbstractClass() throws JsonProcessingException {
@@ -209,7 +240,7 @@ class WebClientPracticeTest {
                 .abstractPostRequest(DPostRequest.builder()
                         .firstName("firstName")
                         .lastName("lastName")
-                        .createdAt(LocalDateTime.now())
+                        .id("pkch")
                         .build()
                 )
                 .build();
@@ -238,7 +269,7 @@ class WebClientPracticeTest {
                                 .abstractPostRequest(DPostRequest.builder()
                                         .firstName("firstName")
                                         .lastName("lastName")
-                                        .createdAt(LocalDateTime.now())
+                                        .id("pkch")
                                         .build()
                                 )
                                 .build()
@@ -255,7 +286,7 @@ class WebClientPracticeTest {
 
         StepVerifier.create(actual)
                 .consumeNextWith(postResponse -> {
-                    assertTrue(postResponse.isSuccess());
+                    assertFalse(postResponse.isSuccess());
                 })
                 .verifyComplete();
     }

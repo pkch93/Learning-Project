@@ -12,8 +12,8 @@ public class DPostRequest extends AbstractPostRequest {
     private String lastName;
 
     @Builder
-    public DPostRequest(LocalDateTime createdAt, String firstName, String lastName) {
-        super(createdAt);
+    public DPostRequest(String id, String firstName, String lastName) {
+        super(id);
         this.firstName = firstName;
         this.lastName = lastName;
     }
