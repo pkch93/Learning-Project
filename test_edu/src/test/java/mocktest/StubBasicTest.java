@@ -4,16 +4,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class StubBasicTest {
@@ -62,6 +62,20 @@ public class StubBasicTest {
         assertThat(mockWords.get(0)).isEqualTo("world");
         assertThatThrownBy(() -> mockWords.get(0))
                 .isInstanceOf(RuntimeException.class);
+    }
+
+    /**
+     * 같은 인자로 stubbing을 하는 경우 stubbing override가 가능하다.
+     */
+    @Test
+    @DisplayName("stubbing한 메서드 덮어쓰기")
+    void stubbing_override() {
+        when(mockWords.add("1")).thenReturn(true);
+        when(mockWords.add("1")).thenReturn(false);
+//        doReturn(false).when(mockWords).add("1");
+
+        assertFalse(mockWords.add("1"));
+
     }
 
     @Test
