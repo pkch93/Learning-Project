@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: batch-edu
+  batch:
+    job:
+      enabled: true
+      names: ${job.name:NONE}
+    initialize-schema: always

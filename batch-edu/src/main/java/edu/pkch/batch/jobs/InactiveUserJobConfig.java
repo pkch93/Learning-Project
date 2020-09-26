@@ -14,6 +14,7 @@ import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.FlowExecutionStatus;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
@@ -25,8 +26,9 @@ import java.util.stream.IntStream;
 import static edu.pkch.batch.domain.user.QUser.user;
 
 @Configuration
+@ConditionalOnProperty(name = "spring.batch.job.names", havingValue = InactiveUserJobConfig.JOB_NAME)
 public class InactiveUserJobConfig {
-    private static final String JOB_NAME = "inactiveUserJob";
+    public static final String JOB_NAME = "inactiveUserJob";
     private static final String STEP_NAME = "inactiveUserStep";
     private static final int PAGE_SIZE = 1000;
     private static final LocalDateTime INACTIVE_BASE_DATE = LocalDateTime.now().minusYears(1);
@@ -41,7 +43,7 @@ public class InactiveUserJobConfig {
         this.userRepository = userRepository;
     }
 
-    @Bean
+    @Bean(JOB_NAME)
     public Job inactiveUserJob(JobBuilderFactory jobBuilderFactory, Flow multipleFlow) {
         return jobBuilderFactory.get(JOB_NAME)
                 .preventRestart()
