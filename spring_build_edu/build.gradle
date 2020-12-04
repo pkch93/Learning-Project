@@ -19,3 +19,21 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+bootJar {
+    layered {
+        application {
+            intoLayer("edu-1")
+        }
+        dependencies {
+            intoLayer("edu-1") {
+                excludeProjectDependencies()
+            }
+            intoLayer("snapshot-dependencies") {
+                include "*:*:*SNAPSHOT"
+            }
+            intoLayer("dependencies")
+        }
+        layerOrder = ["dependencies", "snapshot-dependencies", "edu-1"]
+    }
+}
