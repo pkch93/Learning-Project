@@ -14,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 @Table(
+        name = "MEMBER",
         indexes = {}
 )
 public class User extends BaseEntity {

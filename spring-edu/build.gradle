@@ -1,0 +1,32 @@
+buildscript {
+    ext.javaVersion = '1.8'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.10.RELEASE"
+    }
+}
+
+group = 'edu.pkch'
+version = '0.0.1-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = "${javaVersion}"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'org.springframework:spring-core:4.3.4.RELEASE'
+    implementation 'org.springframework:spring-context:4.3.4.RELEASE'
+    implementation 'org.springframework:spring-webmvc:4.3.4.RELEASE'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+    testImplementation 'org.assertj:assertj-core:3.17.0'
+}

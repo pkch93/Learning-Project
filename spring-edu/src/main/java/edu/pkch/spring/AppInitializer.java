@@ -1,7 +1,5 @@
 package edu.pkch.spring;
 
-import edu.pkch.spring.config.RootConfig;
-import edu.pkch.spring.config.WebConfig;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

@@ -14,7 +14,7 @@ import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles("local")
+@ActiveProfiles("test")
 @SpringBatchTest
 @SpringBootTest
 @TestPropertySource(properties = "job.name=" + SlackNotificationBatchJobConfiguration.JOB_NAME)

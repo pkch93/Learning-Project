@@ -1,22 +1,20 @@
 package edu.pkch.web.controller;
 
-import edu.pkch.web.service.PostService;
+import edu.pkch.starter.Tester;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/posts")
 public class PostApiController {
 
-    private final PostService postService;
+    private final Tester tester;
 
-    public PostApiController(PostService postService) {
-        this.postService = postService;
+    public PostApiController(Tester tester) {
+        this.tester = tester;
     }
 
     @GetMapping
     public String hello() {
-        return "hello";
+        return String.format("hello! tester %s", tester.getName());
     }
 }

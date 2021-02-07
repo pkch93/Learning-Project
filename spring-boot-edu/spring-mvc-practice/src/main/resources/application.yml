@@ -11,3 +11,9 @@ management:
 spring:
   jmx:
     enabled: true
+
+tester:
+  name: pkch
+
+spring:
+  autoconfigure:

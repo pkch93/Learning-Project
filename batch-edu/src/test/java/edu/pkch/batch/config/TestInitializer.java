@@ -22,17 +22,17 @@ public class TestInitializer implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        List<User> users = IntStream.rangeClosed(1, 100)
-                .mapToObj(index -> User.builder()
-                        .name("name" + index)
-                        .email("name" + index + "@woowahan.com")
-                        .password("qwer1234")
-                        .userStatus(UserStatus.ACTIVE)
-                        .grade(Grade.VIP)
-                        .build()
-                )
-                .collect(toList());
-
-        userRepository.saveAll(users);
+//        List<User> users = IntStream.rangeClosed(1, 100)
+//                .mapToObj(index -> User.builder()
+//                        .name("name" + index)
+//                        .email("name" + index + "@woowahan.com")
+//                        .password("qwer1234")
+//                        .userStatus(UserStatus.ACTIVE)
+//                        .grade(Grade.VIP)
+//                        .build()
+//                )
+//                .collect(toList());
+//
+//        userRepository.saveAll(users);
     }
 }

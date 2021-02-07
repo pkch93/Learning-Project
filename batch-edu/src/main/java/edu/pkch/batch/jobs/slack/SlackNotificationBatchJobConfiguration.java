@@ -9,6 +9,7 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,8 +34,8 @@ public class SlackNotificationBatchJobConfiguration {
     @Bean(JOB_NAME)
     public Job slackNotificationBatchJob(Step slackNotificationStep) {
         return jobBuilderFactory.get(JOB_NAME)
-                .preventRestart()
                 .start(slackNotificationStep)
+                .incrementer(new RunIdIncrementer())
                 .build();
     }
 

@@ -1,4 +1,0 @@
-rootProject.name = 'spring-edu'
-
-include 'mvcedu'
-include 'transaction'

@@ -1,6 +1,7 @@
 package edu.pkch.querydsl.practice;
 
 import com.querydsl.core.Tuple;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import edu.pkch.querydsl.domain.Member;
 import edu.pkch.querydsl.domain.QMember;
@@ -88,14 +89,15 @@ public class QuerydslPracticeTest {
     void querydsl_aggregate() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
 
-        List<Tuple> actual = queryFactory
+        JPAQuery<Tuple> from = queryFactory
                 .select(member.count(),
                         member.age.sum(),
                         member.age.avg(),
                         member.age.max(),
                         member.age.min()
                 )
-                .from(member)
+                .from(member);
+        List<Tuple> actual = from
                 .fetch();
 
         assertThat(actual).hasSize(1);
