@@ -1,3 +1,9 @@
 [submodule "java-edu"]
 	path = java-edu
 	url = https://github.com/pkch93/java-edu.git
+[submodule "design-pattern"]
+	path = design-pattern
+	url = https://github.com/pkch93/design-pattern
+[submodule "spring-batch-edu"]
+	path = spring-batch-edu
+	url = https://github.com/pkch93/spring-batch-edu.git

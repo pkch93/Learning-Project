@@ -1,4 +1,0 @@
-dependencies {
-    implementation 'io.projectreactor:reactor-core:3.3.3.RELEASE'
-    testImplementation 'io.projectreactor:reactor-test:3.3.3.RELEASE'
-}

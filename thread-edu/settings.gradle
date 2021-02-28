@@ -1,4 +1,0 @@
-rootProject.name = 'edu.concurrent'
-include 'java'
-include 'spring'
-
