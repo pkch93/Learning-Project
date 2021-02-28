@@ -7,3 +7,15 @@
 [submodule "spring-batch-edu"]
 	path = spring-batch-edu
 	url = https://github.com/pkch93/spring-batch-edu.git
+[submodule "jpa-edu"]
+	path = jpa-edu
+	url = https://github.com/pkch93/jpa-edu.git
+[submodule "spring-edu"]
+	path = spring-edu
+	url = https://github.com/pkch93/spring-edu.git
+[submodule "spring-boot-edu"]
+	path = spring-boot-edu
+	url = https://github.com/pkch93/spring-boot-edu.git
+[submodule "kotlin-edu"]
+	path = kotlin-edu
+	url = https://github.com/pkch93/kotlin-edu.git
