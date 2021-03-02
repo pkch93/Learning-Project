@@ -19,3 +19,6 @@
 [submodule "kotlin-edu"]
 	path = kotlin-edu
 	url = https://github.com/pkch93/kotlin-edu.git
+[submodule "reactive-edu"]
+	path = reactive-edu
+	url = https://github.com/pkch93/reactive-edu.git
