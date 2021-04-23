@@ -22,3 +22,9 @@
 [submodule "reactive-edu"]
 	path = reactive-edu
 	url = https://github.com/pkch93/reactive-edu.git
+[submodule "jackson-edu"]
+	path = jackson-edu
+	url = https://github.com/pkch93/jackson-edu.git
+[submodule "spring-data-redis-edu"]
+	path = spring-data-redis-edu
+	url = https://github.com/pkch93/spring-data-redis-edu.git
