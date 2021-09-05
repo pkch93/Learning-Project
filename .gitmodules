@@ -31,3 +31,6 @@
 [submodule "java-test-edu"]
 	path = java-test-edu
 	url = https://github.com/pkch93/java-test-edu
+[submodule "websocket-edu"]
+	path = websocket-edu
+	url = https://github.com/pkch93/websocket-edu
