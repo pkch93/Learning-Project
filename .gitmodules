@@ -34,3 +34,6 @@
 [submodule "websocket-edu"]
 	path = websocket-edu
 	url = https://github.com/pkch93/websocket-edu
+[submodule "spring-data-jpa-edu"]
+	path = spring-data-jpa-edu
+	url = https://github.com/pkch93/spring-data-jpa-edu.git
