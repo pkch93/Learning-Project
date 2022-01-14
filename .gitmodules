@@ -37,3 +37,6 @@
 [submodule "spring-data-jpa-edu"]
 	path = spring-data-jpa-edu
 	url = https://github.com/pkch93/spring-data-jpa-edu.git
+[submodule "spring-validation-edu"]
+	path = spring-validation-edu
+	url = https://github.com/pkch93/spring-validation-edu.git
